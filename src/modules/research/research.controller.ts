@@ -10,6 +10,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { User } from '../users/user.entity';
 import { CreateReportDto } from './dto/create-report.dto';
@@ -21,6 +22,7 @@ export class ResearchController {
   constructor(private readonly researchService: ResearchService) {}
 
   @Post()
+  @Throttle({ ai: { ttl: 60_000, limit: 1 } })
   create(@CurrentUser() user: User, @Body() dto: CreateReportDto) {
     return this.researchService.create(user.id, dto);
   }

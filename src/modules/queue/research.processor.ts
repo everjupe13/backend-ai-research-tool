@@ -3,8 +3,9 @@ import { Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Job } from 'bullmq';
 import { Repository } from 'typeorm';
+import { AiService } from '../ai/ai.service';
 import { ResearchReport, ReportStatus } from '../research/research-report.entity';
-import { RESEARCH_QUEUE, RESEARCH_JOB } from './queue.constants';
+import { RESEARCH_JOB, RESEARCH_QUEUE } from './queue.constants';
 
 export interface ResearchJobPayload {
   reportId: string;
@@ -19,6 +20,7 @@ export class ResearchProcessor extends WorkerHost {
   constructor(
     @InjectRepository(ResearchReport)
     private readonly reportsRepo: Repository<ResearchReport>,
+    private readonly aiService: AiService,
   ) {
     super();
   }
@@ -32,10 +34,11 @@ export class ResearchProcessor extends WorkerHost {
     await this.reportsRepo.update(reportId, { status: ReportStatus.PROCESSING });
 
     try {
-      // TODO: integrate OpenSearch + AI summarization
+      const summary = await this.aiService.summarize(topic, []);
+
       await this.reportsRepo.update(reportId, {
         status: ReportStatus.DONE,
-        summary: `Summary for "${topic}" — AI integration pending`,
+        summary,
         sources: [],
       });
     } catch (err) {

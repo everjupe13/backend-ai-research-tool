@@ -98,6 +98,16 @@ npm run migration:show
 
 > Миграции хранятся в `src/database/migrations/`. Никогда не менять схему БД вручную — только через миграции.
 
+## Документация
+
+| Файл | Содержимое |
+|------|-----------|
+| [docs/entities.md](docs/entities.md) | Все сущности БД: таблицы, колонки, связи, enum-значения |
+| [docs/ai-module.md](docs/ai-module.md) | AI-модуль (Anthropic/OpenAI, prompt caching, streaming) и rate limiting — включая чеклист для продакшена |
+| [CLAUDE.md](CLAUDE.md) | Полное описание архитектуры проекта для AI-ассистентов |
+
+---
+
 ## Остановка инфраструктуры
 
 ```bash
