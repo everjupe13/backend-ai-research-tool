@@ -7,10 +7,20 @@ const SYSTEM_PROMPT = `You are an expert research assistant. Given a topic and a
 @Injectable()
 export class AiService {
   private readonly logger = new Logger(AiService.name);
-  private readonly anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
-  });
-  private readonly openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  private _anthropic: Anthropic | null = null;
+  private _openai: OpenAI | null = null;
+
+  private get anthropic(): Anthropic {
+    this._anthropic ??= new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    });
+    return this._anthropic;
+  }
+
+  private get openai(): OpenAI {
+    this._openai ??= new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    return this._openai;
+  }
 
   async summarize(topic: string, sources: string[]): Promise<string> {
     try {
