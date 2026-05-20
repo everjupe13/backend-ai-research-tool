@@ -9,7 +9,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     super();
   }
 
-  canActivate(ctx: ExecutionContext): ReturnType<typeof AuthGuard.prototype.canActivate> {
+  canActivate(
+    ctx: ExecutionContext,
+  ): ReturnType<typeof AuthGuard.prototype.canActivate> {
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
       ctx.getHandler(),
       ctx.getClass(),

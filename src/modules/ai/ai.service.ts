@@ -7,19 +7,26 @@ const SYSTEM_PROMPT = `You are an expert research assistant. Given a topic and a
 @Injectable()
 export class AiService {
   private readonly logger = new Logger(AiService.name);
-  private readonly anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  private readonly anthropic = new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY,
+  });
   private readonly openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
   async summarize(topic: string, sources: string[]): Promise<string> {
     try {
       return await this.summarizeWithAnthropic(topic, sources);
     } catch (err) {
-      this.logger.warn(`Anthropic failed, falling back to OpenAI: ${(err as Error).message}`);
+      this.logger.warn(
+        `Anthropic failed, falling back to OpenAI: ${(err as Error).message}`,
+      );
       return this.summarizeWithOpenAI(topic, sources);
     }
   }
 
-  private async summarizeWithAnthropic(topic: string, sources: string[]): Promise<string> {
+  private async summarizeWithAnthropic(
+    topic: string,
+    sources: string[],
+  ): Promise<string> {
     const stream = this.anthropic.messages.stream({
       model: 'claude-sonnet-4-6',
       max_tokens: 4096,
@@ -38,7 +45,10 @@ export class AiService {
     return block?.type === 'text' ? block.text : '';
   }
 
-  private async summarizeWithOpenAI(topic: string, sources: string[]): Promise<string> {
+  private async summarizeWithOpenAI(
+    topic: string,
+    sources: string[],
+  ): Promise<string> {
     const response = await this.openai.chat.completions.create({
       model: 'gpt-4o-mini',
       max_tokens: 4096,

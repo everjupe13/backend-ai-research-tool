@@ -45,9 +45,12 @@ export class ResearchService {
       .limit(limit + 1);
 
     if (query.cursor) {
-      qb.andWhere('r.created_at < (SELECT created_at FROM research_reports WHERE id = :cursor)', {
-        cursor: query.cursor,
-      });
+      qb.andWhere(
+        'r.created_at < (SELECT created_at FROM research_reports WHERE id = :cursor)',
+        {
+          cursor: query.cursor,
+        },
+      );
     }
 
     const rows = await qb.getMany();
