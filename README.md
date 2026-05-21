@@ -102,8 +102,9 @@ npm run migration:show
 
 | Файл | Содержимое |
 |------|-----------|
-| [api-docs/entities.md](api-docs/entities.md) | Все сущности БД: таблицы, колонки, связи, enum-значения |
-| [api-docs/ai-module.md](api-docs/ai-module.md) | AI-модуль (Anthropic/OpenAI, prompt caching, streaming) и rate limiting — включая чеклист для продакшена |
+| [ai-docs/entities.md](ai-docs/entities.md) | Все сущности БД: таблицы, колонки, связи, enum-значения |
+| [ai-docs/ai-module.md](ai-docs/ai-module.md) | AI-модуль (Anthropic/OpenAI, prompt caching, streaming) и rate limiting — включая чеклист для продакшена |
+| [ai-docs/git-workflow.md](ai-docs/git-workflow.md) | Соглашения по git: unstage через `git restore`, формат коммитов, что не делаем |
 | [CLAUDE.md](CLAUDE.md) | Полное описание архитектуры проекта для AI-ассистентов |
 
 ---
