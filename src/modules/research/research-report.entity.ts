@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
-import { BaseEntity } from '../../common/entities/base.entity';
-import { User } from '../users/user.entity';
+import { BaseEntity } from '~/common/entities/base.entity';
+import { User } from '~/modules/users/user.entity';
 
 export enum ReportStatus {
   PENDING = 'pending',

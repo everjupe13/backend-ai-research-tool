@@ -102,8 +102,8 @@ npm run migration:show
 
 | Файл | Содержимое |
 |------|-----------|
-| [docs/entities.md](docs/entities.md) | Все сущности БД: таблицы, колонки, связи, enum-значения |
-| [docs/ai-module.md](docs/ai-module.md) | AI-модуль (Anthropic/OpenAI, prompt caching, streaming) и rate limiting — включая чеклист для продакшена |
+| [api-docs/entities.md](api-docs/entities.md) | Все сущности БД: таблицы, колонки, связи, enum-значения |
+| [api-docs/ai-module.md](api-docs/ai-module.md) | AI-модуль (Anthropic/OpenAI, prompt caching, streaming) и rate limiting — включая чеклист для продакшена |
 | [CLAUDE.md](CLAUDE.md) | Полное описание архитектуры проекта для AI-ассистентов |
 
 ---

@@ -1,8 +1,8 @@
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AiModule } from '../ai/ai.module';
-import { ResearchReport } from '../research/research-report.entity';
+import { AiModule } from '~/modules/ai/ai.module';
+import { ResearchReport } from '~/modules/research/research-report.entity';
 import { RESEARCH_QUEUE } from './queue.constants';
 import { ResearchProcessor } from './research.processor';
 

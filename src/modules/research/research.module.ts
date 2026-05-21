@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { QueueModule } from '../queue/queue.module';
+import { QueueModule } from '~/modules/queue/queue.module';
 import { ResearchController } from './research.controller';
 import { ResearchReport } from './research-report.entity';
 import { ResearchService } from './research.service';

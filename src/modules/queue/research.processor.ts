@@ -3,11 +3,11 @@ import { Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Job } from 'bullmq';
 import { Repository } from 'typeorm';
-import { AiService } from '../ai/ai.service';
+import { AiService } from '~/modules/ai/ai.service';
 import {
   ResearchReport,
   ReportStatus,
-} from '../research/research-report.entity';
+} from '~/modules/research/research-report.entity';
 import { RESEARCH_JOB, RESEARCH_QUEUE } from './queue.constants';
 
 export interface ResearchJobPayload {

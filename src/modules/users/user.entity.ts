@@ -1,6 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { Column, Entity } from 'typeorm';
-import { BaseEntity } from '../../common/entities/base.entity';
+import { BaseEntity } from '~/common/entities/base.entity';
 
 export enum SubscriptionStatus {
   FREE = 'free',
@@ -11,11 +11,11 @@ export enum SubscriptionStatus {
 @Entity('users')
 export class User extends BaseEntity {
   @Column({ unique: true })
-  email: string;
+  email!: string;
 
   @Exclude()
   @Column({ name: 'password_hash' })
-  passwordHash: string;
+  passwordHash!: string;
 
   @Column({
     name: 'subscription_status',
@@ -23,5 +23,5 @@ export class User extends BaseEntity {
     enum: SubscriptionStatus,
     default: SubscriptionStatus.FREE,
   })
-  subscriptionStatus: SubscriptionStatus;
+  subscriptionStatus!: SubscriptionStatus;
 }

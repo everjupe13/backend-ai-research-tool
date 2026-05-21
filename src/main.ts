@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
-import { AppModule } from './app.module';
-import { envSchema } from './config/env.schema';
-import { TransformInterceptor } from './common/interceptors/transform.interceptor';
-import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { AppModule } from '~/app.module';
+import { envSchema } from '~/config/env.schema';
+import { TransformInterceptor } from '~/common/interceptors/transform.interceptor';
+import { HttpExceptionFilter } from '~/common/filters/http-exception.filter';
 
 const env = envSchema.parse(process.env);
 

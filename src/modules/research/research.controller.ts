@@ -11,8 +11,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
-import { CurrentUser } from '../../common/decorators/current-user.decorator';
-import { User } from '../users/user.entity';
+import { CurrentUser } from '~/common/decorators/current-user.decorator';
+import { User } from '~/modules/users/user.entity';
 import { CreateReportDto } from './dto/create-report.dto';
 import { ReportQueryDto } from './dto/report-query.dto';
 import { ResearchService } from './research.service';
