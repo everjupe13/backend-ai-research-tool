@@ -50,10 +50,14 @@ git commit -m "$(cat <<'EOF'
 
 <optional body — only if the why is non-obvious>
 
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+Co-Authored-By: Claude <MODEL_NAME> <noreply@anthropic.com>
 EOF
 )"
 ```
+
+> **`<MODEL_NAME>`** — каждая модель подставляет своё актуальное имя и версию.
+> Примеры: `Claude Sonnet 4.6`, `Claude Opus 4.7`, `Claude Haiku 4.5`.
+> Никогда не оставлять плейсхолдер как есть — всегда подставлять имя модели, создающей коммит.
 
 ### 5. Verify
 
